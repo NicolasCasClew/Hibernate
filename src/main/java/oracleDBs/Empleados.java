@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 @Entity
 public class Empleados {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
     @Column(name = "NIF")
     private String nif;
@@ -22,6 +22,10 @@ public class Empleados {
     @Basic
     @Column(name = "COD_OFI")
     private BigInteger codOfi;
+
+    public Empleados() {
+
+    }
 
     public String getNif() {
         return nif;
@@ -63,6 +67,13 @@ public class Empleados {
         this.codOfi = codOfi;
     }
 
+    public Empleados(String nif, String nombre, String cargo, BigInteger codOfi) {
+        this.nif = nif;
+        this.nombre = nombre;
+        this.cargo = cargo;
+        this.codOfi = codOfi;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,6 +88,17 @@ public class Empleados {
         if (codOfi != null ? !codOfi.equals(empleados.codOfi) : empleados.codOfi != null) return false;
 
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Empleados{" +
+                "nif='" + nif + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", codOfi=" + codOfi +
+                '}';
     }
 
     @Override

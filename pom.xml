@@ -40,9 +40,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.oracle.database.r2dbc</groupId>
-            <artifactId>oracle-r2dbc</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>21.5.0.0</version>
         </dependency>
     </dependencies>
 

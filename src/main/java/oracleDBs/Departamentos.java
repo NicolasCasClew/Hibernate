@@ -43,6 +43,12 @@ public class Departamentos {
         this.localidad = localidad;
     }
 
+    public Departamentos(BigInteger departamento, String nombre, String localidad) {
+        this.departamento = departamento;
+        this.nombre = nombre;
+        this.localidad = localidad;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
