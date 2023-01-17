@@ -22,8 +22,26 @@ public class Empleados {
     @Basic
     @Column(name = "COD_OFI")
     private BigInteger codOfi;
+    @Basic
+    @Column(name = "SUELDO")
+    private BigInteger sueldo;
+
+    @ManyToOne
+    @JoinColumn(name = "COD_OFI", referencedColumnName = "DEPARTAMENTO", nullable = false,insertable=false, updatable=false)
+    private Departamentos departamentosByIdDptEmp;
 
     public Empleados() {
+
+    }
+
+
+
+    public Empleados(String nif, String nombre, String cargo, BigInteger codOfi, BigInteger sueldo) {
+        this.nif = nif;
+        this.nombre = nombre;
+        this.cargo = cargo;
+        this.codOfi = codOfi;
+        this.sueldo = sueldo;
 
     }
 
@@ -67,13 +85,6 @@ public class Empleados {
         this.codOfi = codOfi;
     }
 
-    public Empleados(String nif, String nombre, String cargo, BigInteger codOfi) {
-        this.nif = nif;
-        this.nombre = nombre;
-        this.cargo = cargo;
-        this.codOfi = codOfi;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,12 +103,26 @@ public class Empleados {
 
     @Override
     public String toString() {
-        return "Empleados{" +
-                "nif='" + nif + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", cargo='" + cargo + '\'' +
-                ", codOfi=" + codOfi +
+        return "Empleado {" +
+                "Codigo='" + nif + '\'' +
+                ", Nombre='" + nombre + '\'' +
+                ", Direccion='" + direccion + '\'' +
+                ", Cargo='" + cargo + '\'' +
+                ", Codigo Oficina=" + codOfi +
+                ", Sueldo=" + sueldo +
+
+                '}';
+    }
+
+    public String toStringFull(){
+        return "Empleado {" +
+                "Codigo='" + nif + '\'' +
+                ", Nombre='" + nombre + '\'' +
+                ", Direccion='" + direccion + '\'' +
+                ", Cargo='" + cargo + '\'' +
+                ", Codigo Oficina=" + codOfi +
+                ", Sueldo=" + sueldo +
+                ", Departamento=" + departamentosByIdDptEmp +
                 '}';
     }
 
@@ -109,5 +134,13 @@ public class Empleados {
         result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (codOfi != null ? codOfi.hashCode() : 0);
         return result;
+    }
+
+    public BigInteger getSueldo() {
+        return sueldo;
+    }
+
+    public void setSueldo(BigInteger sueldo) {
+        this.sueldo = sueldo;
     }
 }
